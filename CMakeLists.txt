@@ -9,9 +9,9 @@ file(GLOB C_SOURCES "src/*.c")
 file(GLOB SUBFOLDER_H_SOURCES "src/*/*.h")
 file(GLOB SUBFOLDER_C_SOURCES "src/*/*.c")
 
-add_executable(sledgehammer ${C_SOURCES} ${H_SOURCES} ${SUBFOLDER_H_SOURCES} ${SUBFOLDER_C_SOURCES})
+add_library(sledgehammer ${C_SOURCES} ${H_SOURCES} ${SUBFOLDER_H_SOURCES} ${SUBFOLDER_C_SOURCES})
 
 set_target_properties(sledgehammer PROPERTIES C_STANDARD 23 LINKER_LANGUAGE C OUTPUT_NAME "phys_sandbox")
 
 add_subdirectory(libraries/cglm)
-target_link_libraries(sledgehammer cglm)
+target_link_libraries(sledgehammer PUBLIC m cglm)
