@@ -16,10 +16,11 @@
 typedef struct sl_sIsland {
     // in island data
     bool                 is_in_use            [SL_OBJECT_COUNT];
-    sl_eCollisionShapes  collider_shape       [SL_OBJECT_COUNT];
     bool                 is_static            [SL_OBJECT_COUNT];
+    sl_eCollisionShapes  collider_shape       [SL_OBJECT_COUNT];
     sl_sTransform        object_transforms    [SL_OBJECT_COUNT];
     float                inv_mass             [SL_OBJECT_COUNT];
+    vec3                 center_of_mass       [SL_OBJECT_COUNT];
 
     // Collisions in the current frame
     uint16_t             collision_count;
@@ -34,6 +35,6 @@ void SL_Island_detect_collisions(sl_sIsland *island);
 void SL_Island_resolve_collisions(sl_sIsland *island);
 void SL_Island_step(sl_sIsland *island, const double update);
 
-uint16_t SL_Island_add_rigidbody(sl_sIsland *island, const vec3 position, const versor rotation, const sl_eCollisionShapes shape);
+uint16_t SL_Island_add_rigidbody(sl_sIsland *island, const vec3 position, const versor rotation, const sl_eCollisionShapes shape, const float mass);
 
 #endif

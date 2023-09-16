@@ -18,6 +18,7 @@ inline uint8_t SL_intersection_sphere_sphere(sl_sTransform *obj1,
                  collision_manifold->normal);
 
     intercenter_distance = glm_vec3_norm(collision_manifold->normal);
+    
     // Normalize the normal!
     glm_vec3_divs(collision_manifold->normal, 
                   intercenter_distance, 
